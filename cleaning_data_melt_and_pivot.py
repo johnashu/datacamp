@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 
 #melt
@@ -29,3 +30,9 @@ print(airquality_pivot.head())
 
 # Pivot Duplicate values
 
+airquality_pivot = airquality_melt.pivot_table(index=['Month', 'Day'], columns='measurement', values='reading', aggfunc=np.mean)
+
+airquality_pivot = airquality_pivot.reset_index()
+
+print(airquality_pivot.head())
+print(airquality.head())
