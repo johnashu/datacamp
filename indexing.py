@@ -105,3 +105,59 @@ print(type(turnout_zscore))
 election['turnout_zscore'] = turnout_zscore
 
 print(election.head())
+
+
+# changing the index of a dataframe
+
+sales = pd.read_csv('sales.csv')
+print(sales)
+"""
+### numpy.int64' object has no attribute 'upper' ###
+
+new_idx = [month.upper() for month in sales.index]
+sales.index = new_idx
+print(sales)
+
+"""
+
+sales.index.name = 'MONTHS'
+sales.columns.name = 'PRODUCTS'
+print(sales)
+
+months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+
+sales.index = months
+print(sales)
+
+
+# pivot 
+
+users =pd.read_csv('users.csv')
+
+visitors_pivot = users.pivot(index='weekday', columns='city', values='visitors')
+#print(visitors_pivot)
+
+signups_pivot = users.pivot(index='weekday', columns='city', values='signups')
+#print(signups_pivot)
+
+pivot = users.pivot(index='weekday', columns='city')
+print(pivot)
+
+users = pivot
+print(users)
+
+"""
+byweekday = users.unstack('weekday')
+print(byweekday)
+print(byweekday.stack(level='weekday'))
+
+
+bycity = users.unstack('city')
+print(bycity)
+print(bycity.stack(level="city"))
+
+
+AttributeError: 'Series' object has no attribute 'stack'
+
+"""
+
