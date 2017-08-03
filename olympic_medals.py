@@ -51,8 +51,18 @@ cold_war_usa_usr_medals = medals_won_by_country.loc[1952:1988, ['USA','URS']]
 most_medals = cold_war_usa_usr_medals.idxmax(axis='columns')
 print(most_medals.value_counts())
 
-
-usa = medals.NOC == 'USA'
-usa_medals_by_year = medals.groupby(['Edition', 'Medal'])
+usa = medals[medals.NOC == 'USA']
+usa_medals_by_year = usa.groupby(['Edition', 'Medal'])['Athlete'].count()
+usa_medals_by_year = usa_medals_by_year.unstack(level='Medal')
 usa_medals_by_year.plot()
+plt.show()
+
+usa_medals_by_year.plot.area()
+plt.show()
+
+medals.Medal = pd.Categorical(values=medals.Medal, categories=['Bronze', 'Silver', 'Gold'], ordered=True)
+usa = medals[medals.NOC == 'USA']
+usa_medals_by_year = usa.groupby(['Edition', 'Medal'])['Athlete'].count()
+usa_medals_by_year = usa_medals_by_year.unstack(level='Medal')
+usa_medals_by_year.plot.area()
 plt.show()
