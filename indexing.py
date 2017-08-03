@@ -143,8 +143,6 @@ signups_pivot = users.pivot(index='weekday', columns='city', values='signups')
 pivot = users.pivot(index='weekday', columns='city')
 print(pivot)
 
-users = pivot
-print(users)
 
 """
 byweekday = users.unstack('weekday')
@@ -156,8 +154,23 @@ bycity = users.unstack('city')
 print(bycity)
 print(bycity.stack(level="city"))
 
+newusers =  bycity.stack(level='city')
+newusers = newusers.swaplevel(0, 1)
+print(newusers)
+newusers = newusers.sort_index()
+print(newusers)
+print(newusers.equals(users))
 
 AttributeError: 'Series' object has no attribute 'stack'
 
 """
+
+skinny = pd.melt(users, id_vars=['weekday', 'city'])
+
+print(skinny)
+
+users_idx = users.set_index(['city', 'weekday'])
+print(users_idx)
+kv_pairs = pd.melt(users_idx, col_level=0)
+print(kv_pairs)
 
