@@ -1,11 +1,24 @@
 import pandas as pd
 
-filenames = ['tips.csv', 'sales.csv']
+from glob import glob
+
+filenames = glob('*.csv')
 
 dataframes = [pd.read_csv(f) for f in filenames]
 
-for f in filenames:
-    dataframes.append(pd.read_csv(f))
+print(dataframes[0].head())
 
-print(dataframes)
+bronze = pd.read_csv('Bronze.csv')
+silver = pd.read_csv('Silver.csv')
+gold = pd.read_csv('Gold.csv')
 
+print(gold.head())
+
+medals = gold.copy()
+new_labels = ['NOC', 'Country', 'Gold']
+medals.columns = new_labels
+medals['Silver'] = silver['Total']
+medals['Bronze'] = bronze['Total']
+
+
+print(medals.head())

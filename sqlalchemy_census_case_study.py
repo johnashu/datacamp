@@ -82,7 +82,7 @@ stmt = select([census.columns.state,
 ])
 
 stmt = stmt.group_by(census.columns.state)
-stmt = stmt.order_by('pop_change')
+stmt = stmt.order_by(desc('pop_change'))
 stmt = stmt.limit(10)
 
 results = connection.execute(stmt).fetchall()
