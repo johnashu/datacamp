@@ -84,3 +84,4 @@ stmt_del = stmt_del.where(
 
 results = connection.execute(stmt_del)
 print(results.rowcount, to_delete)
+
