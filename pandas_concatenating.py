@@ -33,19 +33,10 @@ def sales():
     print(quarter1.loc['feb 26, 2015':'mar 7, 2015'])
 
 #sales()
-
-names_1981 = pd.read_csv('names1981.csv', header=None, names=['name','gender','count'])
-names_1881 = pd.read_csv('names1881.csv', header=None, names=['name','gender','count'])
-
-names_1881['year'] = 1881
-names_1981['year'] = 1981
+weather = pd.read_csv('pittsburgh2013.csv', index_col='Date')
 
 
-combined_names = names_1881.append(names_1981, ignore_index=True)
 
-print(names_1981.shape)
-print(names_1881.shape)
-print(combined_names.shape)
+weather = pd.concat([weather_max, weather_mean], axis=1)
 
-print(combined_names.loc[combined_names['name'] == 'John'])
-
+print(weather)
