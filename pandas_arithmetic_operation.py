@@ -80,36 +80,38 @@ def medals():
     silver = pd.read_csv('silver_top5.csv', index_col=0)
     gold = pd.read_csv('gold_top5.csv', index_col=0)
 
-    print(gold)
+    return(gold)
+    return bronze
+    return silver
 
     bns = bronze + silver
-    print(bns)
+    return(bns)
 
     bns = bronze.add(silver, fill_value=0)
-    print(bns)
+    return(bns)
 
     bsg = bronze + silver + gold
-    print(bsg)
+    return(bsg)
 
     bsg = bronze.add(silver, fill_value=0).add(gold, fill_value=0)
-    print(bsg)
+    return(bsg)
     bronze = pd.read_csv('bronze_top5.csv', index_col=0)
     silver = pd.read_csv('silver_top5.csv', index_col=0)
     gold = pd.read_csv('gold_top5.csv', index_col=0)
 
-    print(gold)
+    return(gold)
 
     bns = bronze + silver
-    print(bns)
+    return(bns)
 
     bns = bronze.add(silver, fill_value=0)
-    print(bns)
+    return(bns)
 
     bsg = bronze + silver + gold
-    print(bsg)
+    return(bsg)
 
     bsg = bronze.add(silver, fill_value=0).add(gold, fill_value=0)
-    print(bsg)
+    return(bsg)
 
     medal_types = ['bronze', 'silver', 'gold']
     medals = []
@@ -119,6 +121,9 @@ def medals():
         columns = ['Country', medal]
         medal_df = pd.read_csv(file_name, header=0, index_col='Country', names=columns)
         medals.append(medal_df)
-    medals = pd.concat(medals, axis='columns')
-    print(medals)
+    medals = pd.concat(medals, axis='columns', keys=['bronze', 'silver', 'gold'])
+    return(medals)
 medals()
+
+
+print(bronze)

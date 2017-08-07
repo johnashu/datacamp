@@ -1,8 +1,8 @@
 import pandas as pd
 
-name_2_check = 'Rosie'
+name_2_check = input("Enter a Name Here - 1st Letter a Capital:" )
 
-def baby_name_chack(name):
+def baby_name_check(name):
     names_1981 = pd.read_csv('names1981.csv', header=None, names=['name','gender','count'])
     names_1881 = pd.read_csv('names1881.csv', header=None, names=['name','gender','count'])
 
@@ -19,3 +19,9 @@ def baby_name_chack(name):
     print(combined_names.loc[combined_names['name'] == name])
 
 baby_name_check(name_2_check)
+
+print("Press CTRL+C to exit: ")
+
+while True:
+    pass
+    

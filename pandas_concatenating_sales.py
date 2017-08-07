@@ -30,8 +30,3 @@ quarter1 = pd.concat(units, axis='rows')
 print(quarter1.loc['jan 27, 2015':'feb 2, 2015'])
 print(quarter1.loc['feb 26, 2015':'mar 7, 2015'])
 
-
-
-february = pd.concat(dataframes, axis=1, keys=['Hardware', 'Software', 'Service'] )
-
-print(february.info())
