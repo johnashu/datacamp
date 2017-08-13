@@ -53,24 +53,6 @@ _ = plt.ylabel('percent of vote for Obama')
 plt.show()
 """
 
-def std_deviation(data):
-    """ A function to calculate the Standard Deviation of Data by caclulating the Square Root of The Variance"""
-    def variance():
-        """ Function to calculate the Variance of data by calculating the average of the squared differnces from the mean"""
-        mean_av = np.mean(data)
-        return mean_av
-    
-    print(variance())
-
-maf_std_dev = std_deviation(dem_share_PA)
-
-print(maf_std_dev)
-
-# variance
-
-#print(np.var(dem_share))
-
-
 """
 
 #NEED THE FULL IRIS DATASET.. WITH PETAL LENGTHS.. 
@@ -112,15 +94,25 @@ plt.show()
 
 """
 # Array of differences to mean: differences
-
+differences = versicolor_petal_length - np.mean(versicolor_petal_length)
 
 # Square the differences: diff_sq
-
+diff_sq = differences**2
 
 # Compute the mean square difference: variance_explicit
-
+variance_explicit = np.mean(diff_sq)
 
 # Compute the variance using NumPy: variance_np
-
+variance_np = np.var(versicolor_petal_length)
 
 # Print the results
+print(variance_explicit, variance_np)
+
+# Compute the variance: variance
+variance = np.var(versicolor_petal_length)
+
+# Print the square root of the variance
+print(np.sqrt(variance))
+
+# Print the standard deviation
+print(np.std(versicolor_petal_length))
