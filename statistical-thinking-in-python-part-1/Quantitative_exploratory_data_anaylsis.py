@@ -21,10 +21,6 @@ def ecdf(data):
 
 
 
-    
-
-
-
 df = pd.read_csv('2008_all_states.csv')
 df_swing = pd.read_csv('2008_swing_states.csv')
 iris = pd.read_csv('iris.csv')
@@ -91,8 +87,6 @@ _ = plt.ylabel('petal length (cm)')
 # Show the plot
 plt.show()
 
-
-"""
 # Array of differences to mean: differences
 differences = versicolor_petal_length - np.mean(versicolor_petal_length)
 
@@ -129,3 +123,4 @@ petal_cov = covariance_matrix[0, 1]
 # Print the length/width covariance
 print(petal_cov)
 
+"""
