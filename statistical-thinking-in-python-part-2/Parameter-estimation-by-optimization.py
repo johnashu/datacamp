@@ -18,6 +18,83 @@ import numpy as np
 
 michelson_speed_of_light = pd.read_csv('michelson_speed_of_light.csv')
 
+fer_pand = pd.read_csv('female_literacy_fertility.csv')
+fertility_lit = np.genfromtxt('female_literacy_fertility.csv', delimiter=',')
+
+illiteracy = fertility_lit[:, 2]
+
+x = illiteracy
+
+fertility = fertility_lit[:, 3]
+y = fertility
+
+# Perform a linear regression using np.polyfit(): a, b
+a, b = np.polyfit(illiteracy, fertility, 1)
+
+# Specify slopes to consider: a_vals
+a_vals = np.linspace(0, 0.1, num=200)
+
+# Initialize sum of square of residuals: rss
+rss = np.empty_like(a_vals)
+
+# Compute sum of square of residuals for each value of a_vals
+for i, a in enumerate(a_vals):
+    rss[i] = np.sum((fertility - a* illiteracy - b)**2)
+
+# Perform a linear regression using np.polyfit(): a, b
+a, b = np.polyfit(x, y, 1)
+
+# Print the slope and intercept
+print(a, b)
+
+# Generate theoretical x and y data: x_theor, y_theor
+x_theor = np.array([3, 15])
+y_theor = a * x_theor + b
+
+# Plot the Anscombe data and theoretical line
+plt.plot(x_theor, y_theor)
+plt.plot(x, y, marker='.', linestyle='none')
+
+# Label the axes
+plt.xlabel('x')
+plt.ylabel('y')
+
+# Show the plot
+plt.show()
+
+
+# Iterate through x,y pairs
+for x, y in zip(anscombe_x, anscombe_y):
+    # Compute the slope and intercept: a, b
+    a, b = np.polyfit(x, y, 1)
+
+    # Print the result
+    print('slope:', a, 'intercept:', b)
+"""
+
+# Plot the illiteracy rate versus fertility
+_ = plt.plot(illiteracy, fertility, marker='.', linestyle='none')
+plt.margins(0.02)
+_ = plt.xlabel('percent illiterate')
+_ = plt.ylabel('fertility')
+
+
+
+# Print the results to the screen
+print('slope =', a, 'children per woman / percent illiterate')
+print('intercept =', b, 'children per woman')
+
+# Make theoretical line to plot
+x = np.array([0, 100])
+y = a * x + b
+
+# Add regression line to your plot
+_ = plt.plot(x, y)
+
+# Draw the plot
+plt.show()
+"""
+"""
 # Seed random number generator
 np.random.seed(42)
 
@@ -61,12 +138,4 @@ _ = plt.plot(x_double, y_double)
 # Show the plot
 plt.show()
 
-
-# least squares alorithm  np.polyfit()  - polynominal  - linear is a first degree polynominal
-
-x = 1
-y = 43
-
-slope, intercept = np.polyfit(x, y, 1)
-
-print(slope, intercept)
+"""
