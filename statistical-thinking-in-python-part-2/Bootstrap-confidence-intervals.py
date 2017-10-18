@@ -1,5 +1,5 @@
 import pandas as pd
-
+import numpy as np
 #ecdf
 def ecdf(data):
     """Compute ECDF for a one-dimensional array of measurements."""
@@ -13,11 +13,4 @@ def ecdf(data):
 
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-import numpy as np
-
-michelson_speed_of_light = pd.read_csv('michelson_speed_of_light.csv')
-
-bs_sample = np.random.choice(michelson_speed_of_light, size=100)
-
 

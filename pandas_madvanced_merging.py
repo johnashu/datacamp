@@ -1,3 +1,5 @@
+import pandas as pd
+
 merge_by_city = pd.merge(revenue, managers, on='city')
 print(merge_by_city)
 merge_by_id = pd.merge(revenue, managers, on='branch_id')
